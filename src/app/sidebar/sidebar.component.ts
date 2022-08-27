@@ -3,6 +3,8 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { LayoutService } from '../service/layout.service';
 import { Subscription } from 'rxjs';
+import { ProductService } from '../service/product.service';
+import { Products } from '../products/products.model';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,12 +16,16 @@ export class SidebarComponent implements OnInit {
   @ViewChild("sidenav")
   sidenav!: MatSidenav;
   toggleSub: Subscription = new Subscription();
-
-  constructor(private observer: BreakpointObserver, private layoutService : LayoutService) { }
+  products: Products[]=[]; 
+  
+  constructor(private observer: BreakpointObserver,
+     private layoutService : LayoutService,
+     private productService : ProductService) { }
   ngOnInit() {
    this.toggleSub = this.layoutService.toggleSubject.subscribe(()=>{
       this.sidenav.toggle();
     });
+    this.products = this.productService.products;
   }
 
   ngAfterViewInit() {

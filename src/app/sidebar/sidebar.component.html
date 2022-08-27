@@ -2,7 +2,7 @@
   <mat-sidenav #sidenav>
     <button mat-button class="menu-button">
       <mat-icon>home</mat-icon>
-      <span>Home</span>
+      <span routerLink="home">Home</span>
     </button>
     <button mat-button class="menu-button">
       <mat-icon>person</mat-icon>
@@ -11,6 +11,10 @@
     <button mat-button class="menu-button">
       <mat-icon>info</mat-icon>
       <span>History</span>
+    </button>
+    <button mat-button class="menu-button">
+      <mat-icon>event</mat-icon>
+      <span routerLink="products">Products({{ products.length }})</span>
     </button>
     <mat-divider></mat-divider>
     <button mat-button class="menu-button">
